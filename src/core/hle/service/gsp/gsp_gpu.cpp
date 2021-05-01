@@ -300,12 +300,12 @@ ResultCode SetBufferSwap(u32 screen_id, const FrameBufferInfo& info) {
     WriteSingleHWReg(base_address +
                          4 * static_cast<u32>(GPU_FRAMEBUFFER_REG_INDEX(screen_id, stride)),
                      info.stride);
-    WriteSingleHWReg(base_address + 4 * static_cast<u32>(GPU_FRAMEBUFFER_REG_INDEX(
-                                            screen_id, color_format)),
+    WriteSingleHWReg(base_address +
+                         4 * static_cast<u32>(GPU_FRAMEBUFFER_REG_INDEX(screen_id, color_format)),
                      info.format);
-    WriteSingleHWReg(
-        base_address + 4 * static_cast<u32>(GPU_FRAMEBUFFER_REG_INDEX(screen_id, active_fb)),
-        info.shown_fb);
+    WriteSingleHWReg(base_address +
+                         4 * static_cast<u32>(GPU_FRAMEBUFFER_REG_INDEX(screen_id, active_fb)),
+                     info.shown_fb);
 
     if (Pica::g_debug_context)
         Pica::g_debug_context->OnEvent(Pica::DebugContext::Event::BufferSwapped, nullptr);
